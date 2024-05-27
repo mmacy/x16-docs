@@ -1,0 +1,1769 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Adventures in turn-based text">
+      
+      
+        <meta name="author" content="Marsh Macy">
+      
+      
+        <link rel="canonical" href="https://mmacy.github.io/x16-docs/X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">
+      
+      
+        <link rel="prev" href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/">
+      
+      
+        <link rel="next" href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.24">
+    
+    
+      
+        <title>10: VERA FX Reference - Commander X16 Documentation (UNOFFICIAL)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor:300,300i,400,400i,700,700i%7CChivo+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Actor";--md-code-font:"Chivo Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#10-vera-fx-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Commander X16 Documentation (UNOFFICIAL)" class="md-header__button md-logo" aria-label="Commander X16 Documentation (UNOFFICIAL)" data-md-component="logo">
+      
+  <img src="../images/logo_text.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Commander X16 Documentation (UNOFFICIAL)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              10: VERA FX Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mmacy/x16-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    x16-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Commander X16 Documentation (UNOFFICIAL)" class="md-nav__button md-logo" aria-label="Commander X16 Documentation (UNOFFICIAL)" data-md-component="logo">
+      
+  <img src="../images/logo_text.png" alt="logo">
+
+    </a>
+    Commander X16 Documentation (UNOFFICIAL)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mmacy/x16-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    x16-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2001%20-%20Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1: Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2002%20-%20Getting%20Started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2: Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2003%20-%20Editor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3: Editor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2004%20-%20BASIC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4: BASIC Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2005%20-%20KERNAL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5: KERNAL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2006%20-%20Math%20Library/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6: Math Library
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7: Machine Language Monitor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2008%20-%20Memory%20Map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8: Memory Map
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9: VERA Programmer's Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    10: VERA FX Reference
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11: Sound Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2012%20-%20IO%20Programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12: I/O Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13: Working With CMDR-DOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2014%20-%20Hardware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14: Hardware Pinouts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15: Upgrade Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix A: Sound
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix B: VERA Firmware Recovery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix C: The 65C02 Processor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix D: Official Expansion Cards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix E: Diagnostic Bank
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix F: The 65C816 Processor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="10-vera-fx-reference">10: VERA FX Reference</h1>
+<p><em>Author: MooingLemur, based on documentation written by JeffreyH</em></p>
+<p><strong>This is preliminary documentation and the specification can still change at any point.</strong></p>
+<h1 id="introduction">Introduction</h1>
+<p>This is a reference for the VERA FX features.  It is meant to be a complement to the tutorial, currently found <a href="https://docs.google.com/document/d/1q34uWOiM3Be2pnaHRVgSdHySI-qsiQWPTo_gfE54PTg">here</a>.</p>
+<p>The FX Update mainly adds "helpers" inside of VERA that can be used by the CPU. There is no "magic button" that allows you to do 3D graphics for example. It mainly helps at certain CPU time-consuming tasks, most notably the ones that are present in the (deep) inner-loop of a game/graphics engine. The FX Update does therefore not fundamentally change the architecture or nature of VERA, it extends and improves it.</p>
+<p>In other words: the CPU is still the orchestrator of all that is done, but it is alleviated from certain operations where it is not (very) good at or does not have direct access to.</p>
+<p><strong>FX Update extends addressing modes, it does not add or extend renderers.</strong></p>
+<h1 id="usage">Usage</h1>
+<h3 id="dcsel">DCSEL</h3>
+<p>VERA is mapped as 32 8-bit registers in the memory space of the Commander X16, starting at address $9F20 and ending at $9F3F. Many of these are (fully) used, but some bits remain unused. The DCSEL bits in register $9F25 (also called CTRL) has been extended to 6-bits to allow for the 4 registers $9F29-$9F2C to have additional meanings.</p>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F25</td>
+        <td>CTRL</td>
+        <td colspan="1" align="center">Reset</td>
+        <td colspan="6" align="center"><b>DCSEL</b><br><img src="images/redunderline.png"></td>
+        <td colspan="1" align="center">ADDRSEL</td>
+    </tr>
+</table>
+
+<p>The FX features use DCSEL values 2, 3, 4, 5, and 6. This effectively gives FX 20 8-bit registers. Note that 15 of these registers are <em>write-only</em>, 2 of them are <em>read-only</em> and 3 are both <em>readable</em> and <em>writable</em>,</p>
+<p><strong><em>Important</em></strong>: <em>unless DCSEL values of 2-6 are used, the behavior of VERA is exactly the same as it was before the FX update. This ensures that the FX update is backwards compatible with traditional non-FX uses of VERA.</em></p>
+<h3 id="addr1-mode">Addr1 Mode</h3>
+<p>When DCSEL=2, the main FX configuration register becomes available (FX_CTRL/$9F29), which is both readable and writable. The 2 lower bits are the addr1 mode bits, which will change the behavior of how and when ADDR1 is updated. This puts the FX helpers in a certain "role".</p>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F29</td>
+        <td>FX_CTRL<br>(DCSEL=2)</td>
+        <td align="center">Transp. Writes</td>
+        <td align="center">Cache Write Enable</td>
+        <td align="center">Cache Fill Enable</td>
+        <td align="center">One-byte Cache Cycling</td>
+        <td align="center">16-bit Hop</td>
+        <td align="center">4-bit Mode</td>
+        <td colspan="2" align="center"><b>Addr1 Mode</b><br><img src="images/redunderline.png"></td>
+    </tr>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Addr1 Mode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Traditional VERA behavior</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Line draw helper</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Polygon filler helper</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Affine helper</td>
+</tr>
+</tbody>
+</table>
+<p>By default, Addr1 Mode is set to 0 (=00b), which is the <strong>normal</strong> and already-known behavior of <code>ADDR1</code>.</p>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+
+<h1 id="line-draw-helper">Line draw helper</h1>
+<p>When Addr1 Mode is set to 1 (=01b) the <strong>line draw helper</strong> is enabled.</p>
+<h3 id="setting-up-the-line-draw-helper">Setting up the line draw helper</h3>
+<ul>
+<li>Set <code>ADDR1</code> to the address of the starting pixel</li>
+<li>Determine the octant (see below) you are going to draw in, which will inform your <code>ADDR0</code> and <code>ADDR1</code> increments.<ul>
+<li>Set <code>ADDR1</code> increment in the direction you will <strong><em>always</em></strong> increment each step<ul>
+<li>For 8-bit mode: (+1, -1, -320, or +320)</li>
+<li>For 4-bit mode: (-0.5, +0.5, -160, or +160)</li>
+</ul>
+</li>
+<li>Set <code>ADDR0</code> increment in the direction you will <strong><em>sometimes</em></strong> increment. Even though this is the increment for <code>ADDR0</code>, we are using it in line draw mode as an incrementer for <code>ADDR1</code>.<ul>
+<li>For 8-bit mode: (+1, -1, -320, or +320).</li>
+<li>For 4-bit mode: (-0.5, +0.5, -160, or +160)</li>
+</ul>
+</li>
+<li>For 4-bit mode, the half increments are set via the Nibble Increment bit and optionally the DECR bit in <code>ADDRx_H</code>. For the Nibble Increment bit to have effect, the main Address Increment must be set to 0, and the 4-bit Mode bit must be set in FX_CTRL ($9F29, DCSEL=2).</li>
+</ul>
+</li>
+</ul>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F22</td>
+        <td>ADDRx_H (x=ADDRSEL)</td>
+        <td colspan="4" align="center">Address Increment</td>
+        <td align="center"><b>DECR</b><br><img src="images/redunderline.png"></td>
+        <td align="center"><b>Nibble Increment</b><br><img src="images/redunderline.png"></td>
+        <td align="center">Nibble Address</td>
+        <td align="center">VRAM Address (16)</td>
+    </tr>
+</table>
+
+<p><img alt="Figure 1, The 8 octants" src="../images/fx_fig1.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Octant</th>
+<th>8-bit <code>ADDR1</code> increment</th>
+<th>8-bit <code>ADDR0</code> increment</th>
+<th>4-bit <code>ADDR1</code> increment</th>
+<th>4-bit <code>ADDR0</code> increment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>+1</td>
+<td>-320</td>
+<td>+0.5</td>
+<td>-160</td>
+</tr>
+<tr>
+<td>1</td>
+<td>-320</td>
+<td>+1</td>
+<td>-160</td>
+<td>+0.5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>-320</td>
+<td>-1</td>
+<td>-160</td>
+<td>-0.5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>-1</td>
+<td>-320</td>
+<td>-0.5</td>
+<td>-160</td>
+</tr>
+<tr>
+<td>4</td>
+<td>-1</td>
+<td>+320</td>
+<td>-0.5</td>
+<td>+160</td>
+</tr>
+<tr>
+<td>5</td>
+<td>+320</td>
+<td>-1</td>
+<td>+160</td>
+<td>-0.5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>+320</td>
+<td>+1</td>
+<td>+160</td>
+<td>+0.5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>+1</td>
+<td>+320</td>
+<td>+0.5</td>
+<td>+160</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Set your slope into the two "X Increment" registers (DCSEL=3, see below). Note that increment registers are 15-bit signed fixed-point numbers, and for this mode, the range should be 0.0 to 1.0 inclusive, so you'll either want to store the value of 1, or you'll want to set only the fractional part.</li>
+</ul>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F29</td>
+        <td>FX_X_INCR_L<br>(DCSEL=3)<br>(Write only)</td>
+        <td colspan="8" align="center"><b>X Increment (-2:-9) (signed)</b><br><img src="images/redunderline.png"></td>
+    </tr>
+    <tr>
+        <td>$9F2A</td>
+        <td>FX_X_INCR_H<br>(DCSEL=3)<br>(Write only)</td>
+        <td align="center">X Incr. 32x</td>
+        <td colspan="5" align="center">X Increment (5:1) (signed)</td>
+        <td align="center"><b>X Incr. (0)</b><br><img src="images/redunderline.png"></td>
+        <td align="center"><b>X Incr. (-1)</b><br><img src="images/redunderline.png"></td>
+    </tr>
+</table>
+
+<p><em>Note: Of the two incrementers, the line draw helper uses only the X incrementer. However depending on the octant you are drawing in, this incrementer will be used to depict either x or y pixel increments. So the "X" should not be taken literally here, it just means the first of the two incrementers.</em></p>
+<ul>
+<li>As a side effect of in line draw mode, by setting <code>FX_X_INCR_H</code> ($9F2A, DCSEL=3), the fractional part (the lower 9 bits) of <em>X Position</em> are automatically set to half a pixel. Furthermore, the lowest bit of the pixel position (which acts as an overflow bit) is set to 0 as well. This effectively sets the starting X-position to 0.5 (the center) of a pixel.</li>
+</ul>
+<p><em>Note: There is no need to set the higher bits of the X position, since the FX X position (accumulator) is only used to track the fractional (subpixel) part of the line draw.</em></p>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+
+<h2 id="polygon-filler-helper">Polygon filler helper</h2>
+<p>When Addr1 Mode is set to 2 (=10b) the polygon filler helper is enabled.</p>
+<h3 id="setting-up-the-polygon-filler-helper">Setting up the polygon filler helper</h3>
+<p>Assuming a 320 pixel-wide screen
+* Set <code>ADDR0</code> to the address of the y-position of the top point of the triangle and x=0 (so on the left of the screen). Set its increment to +320 (for 8-bit mode) or +160 (for 4-bit mode).
+    * Note: <code>ADDR0</code> is used as "base address" for calculating <code>ADDR1</code> for each horizontal line of the triangle. <code>ADDR0</code> should therefore start at the top of the triangle and increment exactly one line each time.
+    * There is no need to set <code>ADDR1</code>. This is done by VERA.
+* Calculate your slopes (dx/dy) for both the left and right point. Unlike the line draw helper, these slopes can be negative and can exceed 1.0. They are not dependent on octant, but cover the whole 180 degrees downwards. Below is an illustration of some (not-to-scale) examples of increments:
+<img alt="Figure 2, examples of Bresenham's slope increment values" src="../images/fx_fig2.png" />
+* Set <code>ADDR1</code> increment to +1 (for 8-bit mode) or +0.5 (for 4-bit mode)
+    * <code>ADDR1</code> increment can also be +4 if you use 32-bit cache writes, explained later)
+* Set your left slope into the two "X increment" registers and your right slope into the two "Y increment" registers (DCSEL=3, see below).
+    * Important: They should be set to half the increment (or decrement) per horizontal line! This is because the polygon filler increments in two steps per line.
+* Note that increment registers are 15-bit signed fixed-point numbers:
+* 6 bits for the integer pixel increment
+* 9 bits for the fractional (subpixel) increment
+* 1 additional bit that indicates the actual value should be multiplied by 32</p>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F29</td>
+        <td>FX_X_INCR_L<br>(DCSEL=3)<br>(Write only)</td>
+        <td colspan="8" align="center">X Increment (-2:-9) (signed)</td>
+    </tr>
+    <tr>
+        <td>$9F2A</td>
+        <td>FX_X_INCR_H<br>(DCSEL=3)<br>(Write only)</td>
+        <td align="center">X Incr. 32x</td>
+        <td colspan="6" align="center">X Increment (5:0) (signed)</td>
+        <td align="center">X Incr. (-1)</
+    </tr>
+    <tr>
+        <td>$9F2B</td>
+        <td>FX_Y_INCR_L<br>(DCSEL=3)<br>(Write only)</td>
+        <td colspan="8" align="center">Y/X2 Increment (-2:-9) (signed)</td>
+    </tr>
+    <tr>
+        <td>$9F2C</td>
+        <td>FX_Y_INCR_H<br>(DCSEL=3)<br>(Write only)</td>
+        <td align="center">Y/X2 Incr. 32x</td>
+        <td colspan="6" align="center">Y/X2 Increment (5:0) (signed)</td>
+        <td align="center">Y/X2 Incr. (-1)</
+    </tr>
+</table>
+
+<ul>
+<li>Due to the fact that we are in "polygon fill"-mode, by setting the high bits of the "X increment" ($9F2A, DCSEL=3), the "X position" (the lower 9 bits of the position in DCSEL=4 and DCSEL=5) are automatically set to half a pixel. The same goes for the high bits of the Y/X2 increment ($9F2C, DCSEL=3) and Y/X2 position.</li>
+<li>Set the "X position" and "Y/X2 position” to the x-pixel-position of the top triangle point.</li>
+</ul>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F29</td>
+        <td>FX_X_POS_L<br>(DCSEL=4)<br>(Write only)</td>
+        <td colspan="8" align="center"><b>X Position (7:0)</b><br><img src="images/redunderline.png"></td>
+    </tr>
+    <tr>
+        <td>$9F2A</td>
+        <td>FX_X_POS_H<br>(DCSEL=4)<br>(Write only)</td>
+        <td align="center">X Pos. (-9)</td>
+        <td colspan="4" align="center">-</td>
+        <td colspan="3" align="center"><b>X Position (10:8)</b><br><img src="images/redunderline.png"></td>
+    </tr>
+    <tr>
+        <td>$9F2B</td>
+        <td>FX_Y_POS_L<br>(DCSEL=4)<br>(Write only)</td>
+        <td colspan="8" align="center"><b>Y/X2 Position (7:0)</b><br><img src="images/redunderline.png"></td>
+    </tr>
+    <tr>
+        <td>$9F2C</td>
+        <td>FX_Y_POS_H<br>(DCSEL=4)<br>(Write only)</td>
+        <td align="center">Y/X2 Pos. (-9)</td>
+        <td colspan="4" align="center">-</td>
+        <td colspan="3" align="center"><b>Y/X2 Position (10:8)</b><br><img src="images/redunderline.png"></td>
+    </tr>
+</table>
+
+<p>Steps that are needed for filling a triangle part with lines:
+* Read from <code>DATA1</code>
+    * This will not return any useful data but will do two things in the background:
+        * Increment/decrement the X1 and X2 positions by their corresponding increment values.
+        * Set <code>ADDR1</code> to <code>ADDR0</code> + X1</p>
+<ul>
+<li>Then read the “Fill length (low)”-register.  Its output depends on whether you're in 4 or 8-bit mode.</li>
+</ul>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F2B</td>
+        <td>FX_POLY_FILL_L<br>(DCSEL=5, 4-bit Mode=0)<br>(Read only)</td>
+        <td align="center">Fill Len >= 16</td>
+        <td colspan="2" align="center">X Position (1:0)</td>
+        <td colspan="4" align="center">Fill Len (3:0)</td>
+        <td align="center">0</td>
+    </tr>
+    <tr>
+        <td>$9F2B</td>
+        <td>FX_POLY_FILL_L<br>(DCSEL=5, 4-bit Mode=1, 2-bit Polygon=0)<br>(Read only)</td>
+        <td align="center">Fill Len >= 8</td>
+        <td colspan="2" align="center">X Position (1:0)</td>
+        <td align="center">X Pos. (2)</td>
+        <td colspan="3" align="center">Fill Len (2:0)</td>
+        <td align="center">0</td>
+    </tr>
+</table>
+<ul>
+<li>If fill_len &gt;= 16 (or &gt;= 8 in 4-bit mode) then also read the “Fill length (high)”-register:</li>
+</ul>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F2C</td>
+        <td>FX_POLY_FILL_H<br>(DCSEL=5)<br>(Read only)</td>
+        <td colspan="7" align="center">Fill Len (9:3)</td>
+        <td align="center">0</td>
+    </tr>
+</table>
+<p><strong>Important</strong>: when the two highest bits of Fill Len (bits 8 and 9) are both 1, it means there is a negative fill length. The line should not be drawn!</p>
+<ul>
+<li>Together they give you 10-bits of fill length (ignore the other bits for now). Since <code>ADDR1</code> is already set properly you can immediately start drawing this number of pixels (given by Fill Len).<ul>
+<li><code>sta DATA1</code> ; as many times as Fill Len states</li>
+</ul>
+</li>
+<li>Then read from <code>DATA0</code>: this will (also) increment X1 and X2</li>
+<li>Check if all lines of this triangle part have been drawn, if not go to the first step.</li>
+</ul>
+<p>There is also a 2-bit polygon mode, which is better explained in the <a href="https://docs.google.com/document/d/1q34uWOiM3Be2pnaHRVgSdHySI-qsiQWPTo_gfE54PTg">tutorial</a></p>
+<h2 id="affine-helper">Affine helper</h2>
+<p>When Addr1 Mode is set to 3 (=11b) the affine (transformation) helper is enabled.</p>
+<p>When reading from ADDR1 in this mode, the affine helper reads tile data from a special tile area defined by two new FX registers:
+* FX_TILEBASE is pointed to a set of 8x8 tiles in either 4-bit or 8-bit depth. FX can support up to 256 tile definitions, and can overlap the traditional layer tile bases.
+* FX_MAPBASE points to a square-shaped tile map, one byte per tile. This tile map has no attribute bytes. unlike the traditional layer 0/1 tile maps.</p>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F2A</td>
+        <td>FX_TILEBASE<br>(DCSEL=2)<br>(Write only)</td>
+        <td colspan="6" align="center"><b>FX Tile Base Address (16:11)</b><br><img src="images/redunderline.png"></td>
+        <td align="center"><b>Affine Clip Enable</b><br><img src="images/redunderline.png"></td>
+        <td align="center">2-bit Polygon</td>
+    </tr>
+    <tr>
+        <td>$9F2B</td>
+        <td>FX_MAPBASE<br>(DCSEL=2)<br>(Write only)</td>
+        <td colspan="6" align="center"><b>FX Map Base Address (16:11)</b><br><img src="images/redunderline.png"></td>
+        <td colspan="2" align="center"><b>Map Size</b><br><img src="images/redunderline.png"></td>
+    </tr>
+</table>
+
+<ul>
+<li><strong>Affine Clip Enable</strong> changes the behavior when the X/Y positions are outside of the tile map such that it always reads data from tile 0. The default behavior is to wrap the X/Y position to the opposite side of the map.</li>
+<li><strong>Map Size</strong> is a 2 bit value that affects both the width and height of the tile map.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Map Size</th>
+<th>Dimensions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2×2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>8×8</td>
+</tr>
+<tr>
+<td>2</td>
+<td>32×32</td>
+</tr>
+<tr>
+<td>3</td>
+<td>128×128</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The <strong>Transparent Writes</strong> toggle in FX_CTRL is especially useful in Affine helper mode.  Setting this toggle causes a write of zero to leave the byte (or the nibble) at the target address intact.  This toggle is not limited to affine helper mode, and it affects writes to both DATA0 and DATA1.</li>
+</ul>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F29</td>
+        <td>FX_CTRL<br>(DCSEL=2)</td>
+        <td align="center"><b>Transp. Writes</b><br><img src="images/redunderline.png"></td>
+        <td align="center">Cache Write Enable</td>
+        <td align="center">Cache Fill Enable</td>
+        <td align="center">One-byte Cache Cycling</td>
+        <td align="center">16-bit Hop</td>
+        <td align="center">4-bit Mode</td>
+        <td colspan="2" align="center">Addr1 Mode</td>
+    </tr>
+</table>
+
+<p>When using the affine helper, the X and Y position registers (DCSEL=4) are used to set ADDR1 to the source pixel indirectly in the aforementioned tile map, while the X and Y increments determine the step after each read of ADDR1.</p>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F29</td>
+        <td>FX_X_POS_L<br>(DCSEL=4)<br>(Write only)</td>
+        <td colspan="8" align="center"><b>X Position (7:0)</b><br><img src="images/redunderline.png"></td>
+    </tr>
+    <tr>
+        <td>$9F2A</td>
+        <td>FX_X_POS_H<br>(DCSEL=4)<br>(Write only)</td>
+        <td align="center">X Pos. (-9)</td>
+        <td colspan="4" align="center">-</td>
+        <td colspan="3" align="center"><b>X Position (10:8)</b><br><img src="images/redunderline.png"></td>
+    </tr>
+    <tr>
+        <td>$9F2B</td>
+        <td>FX_Y_POS_L<br>(DCSEL=4)<br>(Write only)</td>
+        <td colspan="8" align="center"><b>Y/X2 Position (7:0)</b><br><img src="images/redunderline.png"></td>
+    </tr>
+    <tr>
+        <td>$9F2C</td>
+        <td>FX_Y_POS_H<br>(DCSEL=4)<br>(Write only)</td>
+        <td align="center">Y/X2 Pos. (-9)</td>
+        <td colspan="4" align="center">-</td>
+        <td colspan="3" align="center"><b>Y/X2 Position (10:8)</b><br><img src="images/redunderline.png"></td>
+    </tr>
+</table>
+
+<p>The affine helper supports the full range of X and Y increment values, including negative values.</p>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F29</td>
+        <td>FX_X_INCR_L<br>(DCSEL=3)<br>(Write only)</td>
+        <td colspan="8" align="center">X Increment (-2:-9) (signed)</td>
+    </tr>
+    <tr>
+        <td>$9F2A</td>
+        <td>FX_X_INCR_H<br>(DCSEL=3)<br>(Write only)</td>
+        <td align="center">X Incr. 32x</td>
+        <td colspan="6" align="center">X Increment (5:0) (signed)</td>
+        <td align="center">X Incr. (-1)</
+    </tr>
+    <tr>
+        <td>$9F2B</td>
+        <td>FX_Y_INCR_L<br>(DCSEL=3)<br>(Write only)</td>
+        <td colspan="8" align="center">Y/X2 Increment (-2:-9) (signed)</td>
+    </tr>
+    <tr>
+        <td>$9F2C</td>
+        <td>FX_Y_INCR_H<br>(DCSEL=3)<br>(Write only)</td>
+        <td align="center">Y/X2 Incr. 32x</td>
+        <td colspan="6" align="center">Y/X2 Increment (5:0) (signed)</td>
+        <td align="center">Y/X2 Incr. (-1)</
+    </tr>
+</table>
+
+<h2 id="32-bit-cache">32-bit cache</h2>
+<p>When the CPU reads a byte via DATA0 or DATA1, and "cache fill enable" is set, the value read will be copied into an indexed location inside the 32-bit cache.</p>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F29</td>
+        <td>FX_CTRL<br>(DCSEL=2)</td>
+        <td align="center">Transp. Writes</td>
+        <td align="center">Cache Write Enable</td>
+        <td align="center"><b>Cache Fill Enable</b><br><img src="images/redunderline.png"></td>
+        <td align="center">One-byte Cache Cycling</td>
+        <td align="center">16-bit Hop</td>
+        <td align="center">4-bit Mode</td>
+        <td colspan="2" align="center">Addr1 Mode</td>
+    </tr>
+</table>
+
+<p>In 8-bit mode, a byte is cached, but in 4-bit mode, a nibble is cached instead. Afterwards, by default, the index into the cache is incremented, and loops back around to 0 after the last index.  The index can be set explicitly via the FX_MULT register.  8-bit mode uses bits 3:2 and ranges from 0-3.  4-bit mode uses bits 3:1 and ranges from 0-7.</p>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F2C</td>
+        <td>FX_MULT<br>(DCSEL=2)<br>(Write only)</td>
+        <td align="center">Reset Accum.</td>
+        <td align="center">Accumulate</td>
+        <td align="center">Subtract Enable</td>
+        <td align="center">Multiplier Enable</td>
+        <td colspan="2" align="center"><b>Cache Byte Index</b><br><img src="images/redunderline.png"></td>
+        <td align="center"><b>Cache Nibble Index</b><br><img src="images/redunderline.png"></td>
+        <td align="center">Two-byte Cache Incr. Mode</td>
+    </tr>
+</table>
+
+<p>Alternatively, the cache index can cycle between two adjacent bytes: 0, 1, and back to 0; or 2, 3, and back to 2. This option only has effect in 8-bit mode.</p>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F2C</td>
+        <td>FX_MULT<br>(DCSEL=2)<br>(Write only)</td>
+        <td align="center">Reset Accum.</td>
+        <td align="center">Accumulate</td>
+        <td align="center">Subtract Enable</td>
+        <td align="center">Multiplier Enable</td>
+        <td colspan="2" align="center">Cache Byte Index</td>
+        <td align="center">Cache Nibble Index</td>
+        <td align="center"><b>Two-byte Cache Incr. Mode</b><br><img src="images/redunderline.png"></td>
+    </tr>
+</table>
+
+<h3 id="setting-the-cache-data-directly">Setting the cache data directly</h3>
+<p>Instead of filling the cache by reading from DATA0 or DATA1, the cache data can also be set directly by writing to the FX_CACHE* registers. Setting the cache directly does not affect the cache index.</p>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F29</td>
+        <td>FX_CACHE_L<br>(DCSEL=6)<br>(Write only)</td>
+        <td colspan="8" align="center">Cache (7:0) | Multiplicand (7:0) (signed)</td>
+    </tr>
+    <tr>
+        <td>$9F2A</td>
+        <td>FX_CACHE_M<br>(DCSEL=6)<br>(Write only)</td>
+        <td colspan="8" align="center">Cache (15:8) | Multiplicand (15:8) (signed)</td>
+    </tr>
+    <tr>
+        <td>$9F2B</td>
+        <td>FX_CACHE_H<br>(DCSEL=6)<br>(Write only)</td>
+        <td colspan="8" align="center">Cache (23:16) | Multiplier (7:0) (signed)</td>
+    </tr>
+    <tr>
+        <td>$9F2C</td>
+        <td>FX_CACHE_U<br>(DCSEL=6)<br>(Write only)</td>
+        <td colspan="8" align="center">Cache (31:24) | Multiplier (15:8) (signed)</td>
+    </tr>
+</table>
+
+<h3 id="writing-the-cache-to-vram">Writing the cache to VRAM</h3>
+<p>If "Cache write enabled" is set, the cache contents are written to VRAM when writing to DATA0 or DATA1.  The primary use is to write all or part of the 32-bit cache to the 4-byte-aligned region of memory at the current address.</p>
+<p>Control over which parts are written are chosen by the value written to DATA0 or DATA1. The value written is treated as a <strong>nibble mask</strong> where a 0-bit writes the data and a 1-bit masks the data from being written.In other words, writing a 0 will flush the entire 32-bit cache. Writing <code>#%00001111</code> will write the second and third byte in the cache to VRAM in the second and third memory locations in the 4-byte-aligned region.</p>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F29</td>
+        <td>FX_CTRL<br>(DCSEL=2)</td>
+        <td align="center">Transp. Writes</td>
+        <td align="center"><b>Cache Write Enable</b><br><img src="images/redunderline.png"></td>
+        <td align="center">Cache Fill Enable</td>
+        <td align="center">One-byte Cache Cycling</td>
+        <td align="center">16-bit Hop</td>
+        <td align="center">4-bit Mode</td>
+        <td colspan="2" align="center">Addr1 Mode</td>
+    </tr>
+</table>
+
+<h3 id="transparency-writes">Transparency writes</h3>
+<p>Transparent writes, when enabled, also applies to cache writes. If enabled, zero bytes (or zero nibbles in 4-bit mode) in the cache, which are treated as transparency pixels, are not written.</p>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F29</td>
+        <td>FX_CTRL<br>(DCSEL=2)</td>
+        <td align="center"><b>Transp. Writes<b><br><img src="images/redunderline.png"></td>
+        <td align="center">Cache Write Enable</td>
+        <td align="center">Cache Fill Enable</td>
+        <td align="center">One-byte Cache Cycling</td>
+        <td align="center">16-bit Hop</td>
+        <td align="center">4-bit Mode</td>
+        <td colspan="2" align="center">Addr1 Mode</td>
+    </tr>
+</table>
+
+<p>When "one-byte cache cycling" is turned on and DATA0 or DATA1 is written to, the byte at the current cache index is written to VRAM. When "Cache write enable" is set as well, the byte is duplicated 4 times when writing to VRAM.</p>
+<p>Usually the incrementing of the cache index is only triggered by reading from DATA0 or DATA1 when cache filling is enabled. However it can also be triggered by reading from DATA0 in polygon mode when cache filling is not enabled and "one-byte cache cycling" is enabled.</p>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F29</td>
+        <td>FX_CTRL<br>(DCSEL=2)</td>
+        <td align="center">Transp. Writes</td>
+        <td align="center">Cache Write Enable</td>
+        <td align="center">Cache Fill Enable</td>
+        <td align="center"><b>One-byte Cache Cycling</b><br><img src="images/redunderline.png"></td>
+        <td align="center">16-bit Hop</td>
+        <td align="center">4-bit Mode</td>
+        <td colspan="2" align="center">Addr1 Mode</td>
+    </tr>
+</table>
+
+<h2 id="multiplier-and-accumulator">Multiplier and accumulator</h2>
+<p>The 32-bit cache also doubles as an input to the hardware multiplier when Multiplier Enable is set.</p>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F2C</td>
+        <td>FX_MULT<br>(DCSEL=2)<br>(Write only)</td>
+        <td align="center">Reset Accum.</td>
+        <td align="center">Accumulate</td>
+        <td align="center">Subtract Enable</td>
+        <td align="center"><b>Multiplier Enable</b><br><img src="images/redunderline.png"></td>
+        <td colspan="2" align="center">Cache Byte Index</td>
+        <td align="center">Cache Nibble Index</td>
+        <td align="center">Two-byte Cache Incr. Mode</td>
+    </tr>
+</table>
+
+<p>To do a single multiplication, put the two 16-bit inputs into the two halves of the 32-bit cache.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    lda #(2 &lt;&lt; 1)
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    sta VERA_CTRL        ; $9F25
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    stz VERA_FX_CTRL     ; $9F29 (mainly to reset Addr1 Mode to 0)
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    lda #%00010000
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    sta VERA_FX_MULT     ; $9F2C
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    lda #(6 &lt;&lt; 1)
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    sta VERA_CTRL        ; $9F25
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    lda #&lt;69
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    sta VERA_FX_CACHE_L  ; $9F29
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    lda #&gt;69
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    sta VERA_FX_CACHE_M  ; $9F2A
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    lda #&lt;420
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    sta VERA_FX_CACHE_H  ; $9F2B
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    lda #&gt;420
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    sta VERA_FX_CACHE_U  ; $9F2C
+</span></code></pre></div>
+<p>The accumulator can be used to accumulate the sum of several multiplications.  Before doing this single multiplication, ensure this is reset this to zero, otherwise the output will be added to the value of the accumulator before being written.  There are two methods to do this. The first is to write a 1 into bit 7 of FX_MULT ($9F2C, DCSEL=2).  The other, more conveniently, is to read FX_ACCUM_RESET (the same register location as VERA_FX_CACHE_L).</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>    lda FX_ACCUM_RESET   ; $9F29 (DCSEL=6)
+</span></code></pre></div>
+<p>To perform the multiplication, it must be written to VRAM first.  This is done via the cache write mechanism. Usually the cache itself is written to VRAM if "Cache Write Enable" is set.  However, if the "Multiplier Enable" bit is also enabled, the multiplier result is written to VRAM instead.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>    ; Set the ADDR0 pointer to $00000 and write our multiplication result there
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    lda #(2 &lt;&lt; 1)
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    sta VERA_CTRL        ; $9F25
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    lda #%01000000       ; Cache Write Enable
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    sta VERA_FX_CTRL     ; $9F29
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    stz VERA_ADDRx_L     ; $9F20 (ADDR0)
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    stz VERA_ADDRx_M     ; $9F21
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    stz VERA_ADDRx_H     ; $9F22 ; no increment
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    stz VERA_DATA0       ; $9F23 ; multiply and write out result
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    lda #%00010000       ; Increment 1
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    sta VERA_ADDRx_H     ; $9F22 ; so we can read out the result
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    lda VERA_DATA0
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    sta $0400
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    lda VERA_DATA0
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    sta $0401
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    lda VERA_DATA0
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    sta $0402
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    lda VERA_DATA0
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    sta $0403
+</span></code></pre></div>
+<p><em>Note</em>: the VERA works by pre-fetching the contents from VRAM whenever the address pointer is changed or incremented. This happens even when the address increment is 0. Due to this behavior, it is possible to have stale data latched in one of the two data ports if the underlying VRAM is changed via the other data port. This example avoids this scenario by only using ADDR0/DATA0. This potential gotcha was not introduced by the FX update, but rather has always been how VERA behaves.</p>
+<h4 id="accumulation">Accumulation</h4>
+<p>One can also trigger the multiplication and add it to (or subtract it from) the multiplication accumulator by calling "accumulate" in one of two different ways. We could write a 1 into bit 6 of FX_MULT ($9F2C, DCSEL=2), but more conveniently, we can read FX_ACCUM (the same register location as VERA_FX_CACHE_M)</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>    lda FX_ACCUM         ; $9F2A (DCSEL=6)
+</span></code></pre></div>
+<p>Once the accumulation is triggered, the result of the operation is stored back into the accumulator.</p>
+<p>The default accumulation operation is (multiply then) add. This can be switched to subtraction by setting the Subtract Enable bit in FX_MULT</p>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F2C</td>
+        <td>FX_MULT<br>(DCSEL=2)<br>(Write only)</td>
+        <td align="center">Reset Accum.</td>
+        <td align="center">Accumulate</td>
+        <td align="center"><b>Subtract Enable</b><br><img src="images/redunderline.png"></td>
+        <td align="center">Multiplier Enable</td>
+        <td colspan="2" align="center">Cache Byte Index</td>
+        <td align="center">Cache Nibble Index</td>
+        <td align="center">Two-byte Cache Incr. Mode</td>
+    </tr>
+</table>
+
+<p>If the multiplication accumulator has a nonzero value, any multiplications carried out via a VRAM Cache write will be offset by the value of the accumulator (either added to or subtracted from the accumulator), but they will not change the value of the accumulator.</p>
+<h3 id="16-bit-hop">16-bit hop</h3>
+<p>There is a special address increment mode that can be used to read pairs of bytes via ADDR1.</p>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F29</td>
+        <td>FX_CTRL<br>(DCSEL=2)</td>
+        <td align="center">Transp. Writes</td>
+        <td align="center">Cache Write Enable</td>
+        <td align="center">Cache Fill Enable</td>
+        <td align="center">One-byte Cache Cycling</td>
+        <td align="center"><b>16-bit Hop</b><br><img src="images/redunderline.png"></td>
+        <td align="center">4-bit Mode</td>
+        <td colspan="2" align="center">Addr1 Mode</td>
+    </tr>
+</table>
+
+<p>In this mode, setting ADDR1's increment to +4 will result in alternating increments of +1 and +3. Setting it to +320 will result in alternating increments of +1 and +319. All other increment values, including negative increments, lack this special hop property.</p>
+<p>After this bit is set, writing to ADDRx_L resets the hop alignment such that the first increment is +1.</p>
+<p>This mode is useful for reading out a series of 16-bit values after a series of multiplications.</p>
+<p>For a more detailed explanation of chained math operations, see the <a href="https://docs.google.com/document/d/1q34uWOiM3Be2pnaHRVgSdHySI-qsiQWPTo_gfE54PTg">tutorial</a>.</p>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 9: VERA Programmer&#39;s Reference">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                9: VERA Programmer's Reference
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/" class="md-footer__link md-footer__link--next" aria-label="Next: 11: Sound Programming">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                11: Sound Programming
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.prune", "navigation.tracking", "toc.follow", "search.suggest", "search.share", "header.autohide"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+      
+    
+  </body>
+</html>

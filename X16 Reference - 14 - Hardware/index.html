@@ -1,0 +1,2650 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Adventures in turn-based text">
+      
+      
+        <meta name="author" content="Marsh Macy">
+      
+      
+        <link rel="canonical" href="https://mmacy.github.io/x16-docs/X16%20Reference%20-%2014%20-%20Hardware/">
+      
+      
+        <link rel="prev" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">
+      
+      
+        <link rel="next" href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.24">
+    
+    
+      
+        <title>14: Hardware Pinouts - Commander X16 Documentation (UNOFFICIAL)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor:300,300i,400,400i,700,700i%7CChivo+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Actor";--md-code-font:"Chivo Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#14-hardware-pinouts" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Commander X16 Documentation (UNOFFICIAL)" class="md-header__button md-logo" aria-label="Commander X16 Documentation (UNOFFICIAL)" data-md-component="logo">
+      
+  <img src="../images/logo_text.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Commander X16 Documentation (UNOFFICIAL)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              14: Hardware Pinouts
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mmacy/x16-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    x16-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Commander X16 Documentation (UNOFFICIAL)" class="md-nav__button md-logo" aria-label="Commander X16 Documentation (UNOFFICIAL)" data-md-component="logo">
+      
+  <img src="../images/logo_text.png" alt="logo">
+
+    </a>
+    Commander X16 Documentation (UNOFFICIAL)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mmacy/x16-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    x16-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2001%20-%20Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1: Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2002%20-%20Getting%20Started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2: Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2003%20-%20Editor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3: Editor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2004%20-%20BASIC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4: BASIC Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2005%20-%20KERNAL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5: KERNAL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2006%20-%20Math%20Library/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6: Math Library
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7: Machine Language Monitor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2008%20-%20Memory%20Map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8: Memory Map
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9: VERA Programmer's Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10: VERA FX Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11: Sound Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2012%20-%20IO%20Programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12: I/O Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13: Working With CMDR-DOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    14: Hardware Pinouts
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    14: Hardware Pinouts
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#port-and-socket-listing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Port and Socket Listing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disclaimer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Disclaimer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#snes-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      SNES Ports
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iec-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      IEC Port
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ps2-keyboard-and-mouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      PS/2 Keyboard and Mouse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expansion-cards-cartridges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expansion Cards / Cartridges
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Expansion Cards / Cartridges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cartridges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cartridges
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cartridges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#booting-from-cartridges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Booting from Cartridges
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atx-power-supply" class="md-nav__link">
+    <span class="md-ellipsis">
+      ATX Power Supply
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j1-rom-write-protect" class="md-nav__link">
+    <span class="md-ellipsis">
+      J1 ROM Write Protect
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j2-nmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      J2 NMI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j3-unknown" class="md-nav__link">
+    <span class="md-ellipsis">
+      J3 (Unknown)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j4-extra-65c22-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      J4 Extra 65C22 Pins
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#j5-program-microcontroller" class="md-nav__link">
+    <span class="md-ellipsis">
+      J5 Program Microcontroller
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="J5 Program Microcontroller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#j6-system-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      J6 System Speed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j7-snes-34" class="md-nav__link">
+    <span class="md-ellipsis">
+      J7 SNES 3/4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j8-front-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      J8 Front Panel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j9-i2csmc-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      J9 I2C/SMC Header
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j10-audio-option" class="md-nav__link">
+    <span class="md-ellipsis">
+      J10 Audio Option
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j12-user-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      J12 User Port
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vera-video-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      VERA Video Header
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VERA Video Header">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vga-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      VGA Connector
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#composite-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Composite Connector
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s-video-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      S-Video Connector
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j2-vera-programming-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      J2 VERA Programming Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vera-j7-remote-sd-card-option" class="md-nav__link">
+    <span class="md-ellipsis">
+      VERA J7 Remote SD Card Option
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15: Upgrade Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix A: Sound
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix B: VERA Firmware Recovery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix C: The 65C02 Processor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix D: Official Expansion Cards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix E: Diagnostic Bank
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix F: The 65C816 Processor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#port-and-socket-listing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Port and Socket Listing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disclaimer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Disclaimer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#snes-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      SNES Ports
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iec-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      IEC Port
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ps2-keyboard-and-mouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      PS/2 Keyboard and Mouse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expansion-cards-cartridges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expansion Cards / Cartridges
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Expansion Cards / Cartridges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cartridges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cartridges
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cartridges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#booting-from-cartridges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Booting from Cartridges
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atx-power-supply" class="md-nav__link">
+    <span class="md-ellipsis">
+      ATX Power Supply
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j1-rom-write-protect" class="md-nav__link">
+    <span class="md-ellipsis">
+      J1 ROM Write Protect
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j2-nmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      J2 NMI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j3-unknown" class="md-nav__link">
+    <span class="md-ellipsis">
+      J3 (Unknown)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j4-extra-65c22-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      J4 Extra 65C22 Pins
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#j5-program-microcontroller" class="md-nav__link">
+    <span class="md-ellipsis">
+      J5 Program Microcontroller
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="J5 Program Microcontroller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#j6-system-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      J6 System Speed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j7-snes-34" class="md-nav__link">
+    <span class="md-ellipsis">
+      J7 SNES 3/4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j8-front-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      J8 Front Panel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j9-i2csmc-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      J9 I2C/SMC Header
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j10-audio-option" class="md-nav__link">
+    <span class="md-ellipsis">
+      J10 Audio Option
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j12-user-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      J12 User Port
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vera-video-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      VERA Video Header
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VERA Video Header">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vga-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      VGA Connector
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#composite-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Composite Connector
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s-video-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      S-Video Connector
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j2-vera-programming-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      J2 VERA Programming Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vera-j7-remote-sd-card-option" class="md-nav__link">
+    <span class="md-ellipsis">
+      VERA J7 Remote SD Card Option
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="14-hardware-pinouts">14: Hardware Pinouts</h1>
+<p>This chapter covers pinout for the I/O ports and headers.</p>
+<h2 id="port-and-socket-listing">Port and Socket Listing</h2>
+<ul>
+<li>VERA Connectors</li>
+<li>SNES Controller Ports (x2)</li>
+<li>IEC Port</li>
+<li>PS/2 Keyboard and mouse</li>
+<li>Expansion Slots (x4 in Gen1)</li>
+<li>User Port Header</li>
+<li>ATX Power Supply</li>
+<li>Front Panel</li>
+</ul>
+<p>Chip sockets are not listed; pinouts are available on their respective data sheets.</p>
+<h2 id="disclaimer">Disclaimer</h2>
+<p>The instructions and information in this document are the best available information at the time of writing. This information is subject to change, and no warranty is implied. We are not liable for damage or injury caused by use or misuse of this information, including damage caused by inaccurate information. Interfacing and modifying your Commander X16 is done solely at your own risk.</p>
+<p>If you attempt to upgrade your firmware and the process fails, one of our community members may be able to help. Please visit the forums or the Discord community, both of which can be reached through <a href="https://commanderx16.com">https://commanderx16.com</a>.</p>
+<h3 id="snes-ports">SNES Ports</h3>
+<p>The computer contains two SNES style ports and will work with Super Nintendo compatible game pads. An on-board pin header is accessible to connect two additional SNES ports.</p>
+<p><img alt="SNES Controller Port" src="../images/SNES_Controller_Female.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Pin #</th>
+<th>Description</th>
+<th>Wire Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>+5v</td>
+<td>White</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Data Clock</td>
+<td>Yellow/Red</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Data Latch</td>
+<td>Orange</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Serial Data</td>
+<td>Red/Yellow</td>
+</tr>
+<tr>
+<td>5</td>
+<td>N/C</td>
+<td>-</td>
+</tr>
+<tr>
+<td>6</td>
+<td>N/C</td>
+<td>-</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Ground</td>
+<td>Brown</td>
+</tr>
+</tbody>
+</table>
+<p>The Data Clock and Data Latch are generated by the computer and are shared across all SNES ports. The Serial Data line is unique per controller.</p>
+<p>Thanks to <a href="https://consolemods.org/wiki/SNES:Connector_Pinouts">Console Mods Wiki</a></p>
+<h3 id="iec-port">IEC Port</h3>
+<p>The IEC port is a female 6 pin DIN 45322 connector. The pinout and specifications are the same as the Commodore 128 computer, with the required lines for Fast IEC, as used by the 1571 and 1581 diskette drives. 1541 drives are also compatible, using standard IEC mode at 400-600 bytes/sec.</p>
+<p><img alt="IEC Serial Port" src="../images/iec_port.gif" /></p>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Description</th>
+<th>Signal Direction</th>
+<th>Remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>SERIAL SRQ</td>
+<td>IN</td>
+<td>Serial Service Request In, at the C128 "Fast Serial Clock"</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GND</td>
+<td>-</td>
+<td>Ground, signal ground (0V)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>SERIAL ATN</td>
+<td>OUT</td>
+<td>Attention, for the selection of a device at beginning/end of a transmission</td>
+</tr>
+<tr>
+<td>4</td>
+<td>SERIAL CLK</td>
+<td>IN/OUT</td>
+<td>Clock (for data transmission)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SERIAL DATA</td>
+<td>IN/OUT</td>
+<td>Data</td>
+</tr>
+<tr>
+<td>6</td>
+<td>SERIAL RESET</td>
+<td>OUT(/IN)</td>
+<td>Reset</td>
+</tr>
+</tbody>
+</table>
+<p>The IEC protocol is beyond the scope of this document. Please see <a href="https://en.wikipedia.org/wiki/Commodore_bus">Wikipedia</a> for more information.</p>
+<h3 id="ps2-keyboard-and-mouse">PS/2 Keyboard and Mouse</h3>
+<p><img alt="PS/2 Pinout" src="../images/ps2_pinout.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>+DATA</td>
+<td>Data</td>
+</tr>
+<tr>
+<td>2</td>
+<td>NC</td>
+<td>Not connected</td>
+</tr>
+<tr>
+<td>3</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Vcc</td>
+<td>+5 VDC</td>
+</tr>
+<tr>
+<td>5</td>
+<td>+CLK</td>
+<td>Clock</td>
+</tr>
+<tr>
+<td>6</td>
+<td>NC</td>
+<td>Not Connected</td>
+</tr>
+</tbody>
+</table>
+<h3 id="expansion-cards-cartridges">Expansion Cards / Cartridges</h3>
+<p>The expansion slots can be used for I/O modules and RAM/ROM cartridges and expose the
+full CPU address and data bus, plus the ROM bank select lines, stereo audio, and 5 IO select lines.</p>
+<p>The expansion/cartridge port is a 60-pin edge connector with 2.54mm pitch.
+Pin 1 is in the rear-left corner.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Desc</th>
+<th style="text-align: right;">Pin</th>
+<th></th>
+<th>Pin</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">-12V</td>
+<td style="text-align: right;">1</td>
+<td>[ ]</td>
+<td>2</td>
+<td>+12V</td>
+</tr>
+<tr>
+<td style="text-align: right;">GND</td>
+<td style="text-align: right;">3</td>
+<td>[ ]</td>
+<td>4</td>
+<td>+5V</td>
+</tr>
+<tr>
+<td style="text-align: right;">AUDIO_L</td>
+<td style="text-align: right;">5</td>
+<td>[ ]</td>
+<td>6</td>
+<td>GND</td>
+</tr>
+<tr>
+<td style="text-align: right;">AUDIO_R</td>
+<td style="text-align: right;">7</td>
+<td>[ ]</td>
+<td>8</td>
+<td>ROMB7</td>
+</tr>
+<tr>
+<td style="text-align: right;">IO3</td>
+<td style="text-align: right;">9</td>
+<td>[ ]</td>
+<td>10</td>
+<td>ROMB0</td>
+</tr>
+<tr>
+<td style="text-align: right;">IO4</td>
+<td style="text-align: right;">11</td>
+<td>[ ]</td>
+<td>12</td>
+<td>ROMB1</td>
+</tr>
+<tr>
+<td style="text-align: right;">IO7</td>
+<td style="text-align: right;">13</td>
+<td>[ ]</td>
+<td>14</td>
+<td>ROMB6</td>
+</tr>
+<tr>
+<td style="text-align: right;">IO5</td>
+<td style="text-align: right;">15</td>
+<td>[ ]</td>
+<td>16</td>
+<td>ROMB2</td>
+</tr>
+<tr>
+<td style="text-align: right;">IO6</td>
+<td style="text-align: right;">17</td>
+<td>[ ]</td>
+<td>18</td>
+<td>ROMB5</td>
+</tr>
+<tr>
+<td style="text-align: right;">RESB</td>
+<td style="text-align: right;">19</td>
+<td>[ ]</td>
+<td>20</td>
+<td>ROMB3</td>
+</tr>
+<tr>
+<td style="text-align: right;">RDY</td>
+<td style="text-align: right;">21</td>
+<td>[ ]</td>
+<td>22</td>
+<td>ROMB4</td>
+</tr>
+<tr>
+<td style="text-align: right;">IRQB</td>
+<td style="text-align: right;">23</td>
+<td>[ ]</td>
+<td>24</td>
+<td>PHI2</td>
+</tr>
+<tr>
+<td style="text-align: right;">BE</td>
+<td style="text-align: right;">25</td>
+<td>[ ]</td>
+<td>26</td>
+<td>RWB</td>
+</tr>
+<tr>
+<td style="text-align: right;">NMIB</td>
+<td style="text-align: right;">27</td>
+<td>[ ]</td>
+<td>28</td>
+<td>MLB</td>
+</tr>
+<tr>
+<td style="text-align: right;">SYNC</td>
+<td style="text-align: right;">29</td>
+<td>[ ]</td>
+<td>30</td>
+<td>D0</td>
+</tr>
+<tr>
+<td style="text-align: right;">A0</td>
+<td style="text-align: right;">31</td>
+<td>[ ]</td>
+<td>32</td>
+<td>D1</td>
+</tr>
+<tr>
+<td style="text-align: right;">A1</td>
+<td style="text-align: right;">33</td>
+<td>[ ]</td>
+<td>34</td>
+<td>D2</td>
+</tr>
+<tr>
+<td style="text-align: right;">A2</td>
+<td style="text-align: right;">35</td>
+<td>[ ]</td>
+<td>36</td>
+<td>D3</td>
+</tr>
+<tr>
+<td style="text-align: right;">A3</td>
+<td style="text-align: right;">37</td>
+<td>[ ]</td>
+<td>38</td>
+<td>D4</td>
+</tr>
+<tr>
+<td style="text-align: right;">A4</td>
+<td style="text-align: right;">39</td>
+<td>[ ]</td>
+<td>40</td>
+<td>D5</td>
+</tr>
+<tr>
+<td style="text-align: right;">A5</td>
+<td style="text-align: right;">41</td>
+<td>[ ]</td>
+<td>42</td>
+<td>D6</td>
+</tr>
+<tr>
+<td style="text-align: right;">A6</td>
+<td style="text-align: right;">43</td>
+<td>[ ]</td>
+<td>44</td>
+<td>D7</td>
+</tr>
+<tr>
+<td style="text-align: right;">A7</td>
+<td style="text-align: right;">45</td>
+<td>[ ]</td>
+<td>46</td>
+<td>A15</td>
+</tr>
+<tr>
+<td style="text-align: right;">A8</td>
+<td style="text-align: right;">47</td>
+<td>[ ]</td>
+<td>48</td>
+<td>A14</td>
+</tr>
+<tr>
+<td style="text-align: right;">A9</td>
+<td style="text-align: right;">49</td>
+<td>[ ]</td>
+<td>50</td>
+<td>A13</td>
+</tr>
+<tr>
+<td style="text-align: right;">A10</td>
+<td style="text-align: right;">51</td>
+<td>[ ]</td>
+<td>52</td>
+<td>A12</td>
+</tr>
+<tr>
+<td style="text-align: right;">A11</td>
+<td style="text-align: right;">53</td>
+<td>[ ]</td>
+<td>54</td>
+<td>SDA</td>
+</tr>
+<tr>
+<td style="text-align: right;">GND</td>
+<td style="text-align: right;">55</td>
+<td>[ ]</td>
+<td>56</td>
+<td>SCL</td>
+</tr>
+<tr>
+<td style="text-align: right;">+5V</td>
+<td style="text-align: right;">57</td>
+<td>[ ]</td>
+<td>58</td>
+<td>GND</td>
+</tr>
+<tr>
+<td style="text-align: right;">+12V</td>
+<td style="text-align: right;">59</td>
+<td>[ ]</td>
+<td>60</td>
+<td>-12V</td>
+</tr>
+</tbody>
+</table>
+<p>To simplify address decoding, pins IO3-IO7 are active for specific, 32-byte memory mapped IO
+(MMIO) address ranges.</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Usage</th>
+<th>Speed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$9F60-$9F7F</td>
+<td>Expansion Card Memory Mapped IO3</td>
+<td>8 MHz</td>
+</tr>
+<tr>
+<td>$9F80-$9F9F</td>
+<td>Expansion Card Memory Mapped IO4</td>
+<td>8 MHz</td>
+</tr>
+<tr>
+<td>$9FA0-$9FBF</td>
+<td>Expansion Card Memory Mapped IO5</td>
+<td>2 MHz</td>
+</tr>
+<tr>
+<td>$9FC0-$9FDF</td>
+<td>Expansion Card Memory Mapped IO6</td>
+<td>2 MHz</td>
+</tr>
+<tr>
+<td>$9FE0-$9FFF</td>
+<td>Cartidge/Expansion Memory Mapped IO7</td>
+<td>2 MHz</td>
+</tr>
+</tbody>
+</table>
+<p>Expansion cards can use the IO3-IO6 lines as enable lines to provide their IO address range
+(s), or decode the address from the address bus directly. To prevent conflicts with other
+devices, expansion boards should allow the user to select their desired I/O bank with jumpers
+or DIP switches. IO7 is given priority to external cartridges that use MMIO and should be
+only used by an expansion card if there are no other MMIO ranges available. Doing so may
+cause a bus conflict with cartridges that make us of MMIO (such as those with expansion
+hardware). See below for more information on cartridges.</p>
+<p>ROMB0-ROMB7 are connected to the ROM bank latch at address <code>$01</code>. Values 0-31 (<code>$00</code>-<code>$1F</code>)
+address the on-board ROM chips, and 32-255 are intended for expansion ROM or RAM chips
+(typically used by cartridges, see below). This allows for a total of 3.5MB of address space
+in the <code>$C000-$FFFF</code> address range.</p>
+<p>SCL and SDA pins are shared with the i2c connector on J9 and can be used to access i2c
+peripherals on cartridges or expansion cards.</p>
+<p>AUDIO_L and AUDIO_R are routed to J10, the audio option header.</p>
+<p>The other pins are connected to the system bus and directly to the 65C02 processor.</p>
+<h4 id="cartridges">Cartridges</h4>
+<p>Cartridges are essentially an expansion card housed in an external enclosure. Typically they are
+used for applications (e.g. games) with the X16 being able to boot directly from a cartridge at
+power on. They contain banked ROM and/or RAM and an optional I2C EEPROM
+(for storing game save states).</p>
+<p>They can also function as an expansion card which means they can also use MMIO. Similarly an internal
+expansion card could contain RAM/ROM as well.</p>
+<p>Because of this, while develoeprs are free to use the hardware as they please, to avoid
+conflcits, the banked ROM/RAM space is suggested to be used only by cartridges and
+cartridges should avoid using MMIO IO3-IO6. Instead, IO7 should be the default option
+for cartridges and the last option for expansion cards (only used if there are no
+other IO ranges available).</p>
+<p>This helps avoid bus conflicts and an otherwise bad user experience given a
+cartridge should be simple to use from the standpoint of the user
+("insert game -&gt; play game").</p>
+<p>These are soft guidelines. There is nothing physically preventing an expansion card from using
+banked ROM/RAM or a cartridge using any of the MMIO addresses. Doing so risks conflicts and
+compatibility issues.</p>
+<p>Cartridges with additional hardware would be similar to expansion chips found on some NES and
+SNES cartridges (think VRC6, Super FX, etc.) and could be used for really anything,
+such as having a MIDI input for a cartridge that is meant as a music maker;
+some sort of hardware accelerator FPGA; network support, etc.</p>
+<p>For more information about the memory map visit
+<a href="../X16%20Reference%20-%2008%20-%20Memory%20Map/#chapter-8-memory-map">Chapter 8: Memory Map</a>.</p>
+<h5 id="booting-from-cartridges">Booting from Cartridges</h5>
+<p>After the X16 finishes it's hardware initialization, the kernel checks bank 32 for the signature "CX16"
+at <code>$C000</code>. If found, it then jumps to <code>$C004</code> and leaves interrupts disabled.</p>
+<h3 id="atx-power-supply">ATX Power Supply</h3>
+<p>The Commander X16 has a socket for an industry standard 24-pin ATX power supply connector. Either a 24-pin or 20-pin PSU connector can be plugged in, though only the pins for the older 20-pin standard are used by the computer. You don't need an expensive power supply, but it must supply the -12v rail. Not all do, so check your unit to make sure. If you can't tell from the label, you can check Pin 12 and COM. If the clip side is facing away from you, pin 14 will be the second pin on the left on the clip side. For a 20-pin cable, -12v is on pin 12, but at the same relative position &mdash; the second pin on the left on the clip side.</p>
+<table>
+<thead>
+<tr>
+<th>24-pin ATX power connector, cable end</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="Cable end view of ATX power connector" src="../images/atx_24_pin-small.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>By CalvinTheMan - Own work, CC BY-SA 4.0, <a href="https://commons.wikimedia.org/w/index.php?curid=50881708">https://commons.wikimedia.org/w/index.php?curid=50881708</a></p>
+<p>The Commander X16 does not use the 4-pin CPU power, GPU power, 4-pin drive power, or SATA power connectors.</p>
+<p>To save space, when running a bare motherboard, we recommend a "Pico PSU" power supply, which derives all of the necessary power lines from a single 12V source.</p>
+<h3 id="j1-rom-write-protect">J1 ROM Write Protect</h3>
+<p>Remove J1 to write protect system ROM. With J1 installed, users can program the system ROM using an appropriate ROM flash program.</p>
+<h3 id="j2-nmi">J2 NMI</h3>
+<p>Connect a button here to generate an Non Maskable Interrupt (NMI) on the CPU. This will execute a BASIC warm start, which will stop any existing program, clear the screen, and print the READY prompt.</p>
+<h3 id="j3-unknown">J3 (Unknown)</h3>
+<p>Connect J8 for LPT Compat. (TODO: Is this the Centronics parallel port mode Lorin hinted at early on?)</p>
+<h3 id="j4-extra-65c22-pins">J4 Extra 65C22 Pins</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Desc</th>
+<th style="text-align: right;">Pin</th>
+<th></th>
+<th>Pin</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">CA1</td>
+<td style="text-align: right;">1</td>
+<td>. .</td>
+<td>2</td>
+<td>CA2</td>
+</tr>
+<tr>
+<td style="text-align: right;">PB0</td>
+<td style="text-align: right;">3</td>
+<td>. .</td>
+<td>4</td>
+<td>PB1</td>
+</tr>
+<tr>
+<td style="text-align: right;">PB2</td>
+<td style="text-align: right;">5</td>
+<td>. .</td>
+<td>6</td>
+<td>CB2</td>
+</tr>
+</tbody>
+</table>
+<p>These pins are connected to VIA 1 at $9F00-$9F0F.</p>
+<h2 id="j5-program-microcontroller">J5 Program Microcontroller</h2>
+<p>Remove jumpers from J5 to program microcontroller.</p>
+<h3 id="j6-system-speed">J6 System Speed</h3>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 - 2</td>
+<td>8 MHz</td>
+</tr>
+<tr>
+<td>3 - 4</td>
+<td>4 MHz</td>
+</tr>
+<tr>
+<td>5 - 6</td>
+<td>2 MHz</td>
+</tr>
+</tbody>
+</table>
+<h3 id="j7-snes-34">J7 SNES 3/4</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Desc</th>
+<th style="text-align: right;">Pin</th>
+<th></th>
+<th>Pin</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">CLC</td>
+<td style="text-align: right;">1</td>
+<td>. .</td>
+<td>2</td>
+<td>VCC</td>
+</tr>
+<tr>
+<td style="text-align: right;">LATCH</td>
+<td style="text-align: right;">3</td>
+<td>. .</td>
+<td>4</td>
+<td>DAT4</td>
+</tr>
+<tr>
+<td style="text-align: right;">DAT3</td>
+<td style="text-align: right;">5</td>
+<td>. .</td>
+<td>6</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+<p>These pins will allow for two additional SNES controllers, for a total of four controllers on the system.</p>
+<h3 id="j8-front-panel">J8 Front Panel</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Desc</th>
+<th style="text-align: right;">Pin</th>
+<th></th>
+<th>Pin</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">HDD LED+</td>
+<td style="text-align: right;">1</td>
+<td>. .</td>
+<td>2</td>
+<td>POW LED +</td>
+</tr>
+<tr>
+<td style="text-align: right;">HDD LED-</td>
+<td style="text-align: right;">3</td>
+<td>. .</td>
+<td>4</td>
+<td>POW LED -</td>
+</tr>
+<tr>
+<td style="text-align: right;">RESET BUT</td>
+<td style="text-align: right;">5</td>
+<td>. .</td>
+<td>6</td>
+<td>POW BUT</td>
+</tr>
+<tr>
+<td style="text-align: right;">RESET BUT</td>
+<td style="text-align: right;">7</td>
+<td>. .</td>
+<td>7</td>
+<td>POW BUT</td>
+</tr>
+<tr>
+<td style="text-align: right;">+5VDC</td>
+<td style="text-align: right;">9</td>
+<td>. .</td>
+<td>10</td>
+<td>NC</td>
+</tr>
+</tbody>
+</table>
+<p>This pinout is compatible with newer ATX style motherboards. AT motherboards and older ATX cases may still have a 3-pin power LED connector (with a blank pin in the middle.) You will need to move the + (red) wire on the power LED connector to the center pin, if this is the case. Or you can use two Male-Female breadboard cables to jumper the header to your power LED connector.</p>
+<p>There is no on-board speaker header. Instead, all audio is routed to the rear panel headphone jack via the Audio Option header.</p>
+<h3 id="j9-i2csmc-header">J9 I2C/SMC Header</h3>
+<p>There are two different layouts for the SMC header. The first layout appears to be the curretnt (PRxxxxx) boards:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Desc</th>
+<th style="text-align: right;">Pin</th>
+<th></th>
+<th>Pin</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">SMC MOSI/I2C SDA</td>
+<td style="text-align: right;">1</td>
+<td>. .</td>
+<td>2</td>
+<td>+5V</td>
+</tr>
+<tr>
+<td style="text-align: right;">RTC MFP</td>
+<td style="text-align: right;">3</td>
+<td>. .</td>
+<td>4</td>
+<td>SMC TX</td>
+</tr>
+<tr>
+<td style="text-align: right;">SMC Reset</td>
+<td style="text-align: right;">5</td>
+<td>. .</td>
+<td>6</td>
+<td>SMC RX</td>
+</tr>
+<tr>
+<td style="text-align: right;">SMC SCK/I2C SCL</td>
+<td style="text-align: right;">7</td>
+<td>. .</td>
+<td>8</td>
+<td>GND</td>
+</tr>
+<tr>
+<td style="text-align: right;">5VSB</td>
+<td style="text-align: right;">9</td>
+<td>. .</td>
+<td>10</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+<p>This is the layout on the DEVxxxxx boards:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Desc</th>
+<th style="text-align: right;">Pin</th>
+<th></th>
+<th>Pin</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">SMC MOSI/I2C SDA</td>
+<td style="text-align: right;">1</td>
+<td>. .</td>
+<td>2</td>
+<td>+5VSB</td>
+</tr>
+<tr>
+<td style="text-align: right;">RTC MFP</td>
+<td style="text-align: right;">3</td>
+<td>. .</td>
+<td>4</td>
+<td>SMC TX</td>
+</tr>
+<tr>
+<td style="text-align: right;">SMC Reset</td>
+<td style="text-align: right;">5</td>
+<td>. .</td>
+<td>6</td>
+<td>SMC RX</td>
+</tr>
+<tr>
+<td style="text-align: right;">SMC SCK/I2C SCL</td>
+<td style="text-align: right;">7</td>
+<td>. .</td>
+<td>8</td>
+<td>GND</td>
+</tr>
+<tr>
+<td style="text-align: right;">MISO</td>
+<td style="text-align: right;">9</td>
+<td>. .</td>
+<td>10</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+<h3 id="j10-audio-option">J10 Audio Option</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Desc</th>
+<th style="text-align: right;">Pin</th>
+<th></th>
+<th>Pin</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">SDA</td>
+<td style="text-align: right;">1</td>
+<td>. .</td>
+<td>2</td>
+<td>RESB</td>
+</tr>
+<tr>
+<td style="text-align: right;">SCL</td>
+<td style="text-align: right;">3</td>
+<td>. .</td>
+<td>4</td>
+<td>VCC</td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">5</td>
+<td>. .</td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: right;">+12V</td>
+<td style="text-align: right;">7</td>
+<td>. .</td>
+<td>8</td>
+<td>-12V</td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">9</td>
+<td>. .</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: right;">VERA_L</td>
+<td style="text-align: right;">11</td>
+<td>. .</td>
+<td>12</td>
+<td>BUS_L</td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">13</td>
+<td>. .</td>
+<td>14</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: right;">VERA_R</td>
+<td style="text-align: right;">15</td>
+<td>. .</td>
+<td>16</td>
+<td>BUS_R</td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">17</td>
+<td>. .</td>
+<td>18</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: right;">YM_L</td>
+<td style="text-align: right;">19</td>
+<td>. .</td>
+<td>20</td>
+<td>OUT_L</td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">21</td>
+<td>. .</td>
+<td>22</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: right;">YM_R</td>
+<td style="text-align: right;">23</td>
+<td>. .</td>
+<td>24</td>
+<td>OUT_R</td>
+</tr>
+</tbody>
+</table>
+<p>5,6,9,10,13,14,17,18,21,22 - GND</p>
+<p>Next to the audio header is a set of jumper pads, JP1-JP6. Cutting these traces allows you to extract isolated audio from each of the system devices or build a mixer to adjust the relative balance of the audio devices.</p>
+<p>In order to avoid ground loop and power supply noise, we recommend installing a ground loop isolator when using an external mixer. 2 or 3 isolators will be required (one for each stereo pair.)  (TODO: measure noise and test with pro audio gear.)</p>
+<h3 id="j12-user-port">J12 User Port</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Desc</th>
+<th style="text-align: right;">Pin</th>
+<th></th>
+<th>Pin</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">PB0</td>
+<td style="text-align: right;">1</td>
+<td>. .</td>
+<td>2</td>
+<td>PB4</td>
+</tr>
+<tr>
+<td style="text-align: right;">PA0</td>
+<td style="text-align: right;">3</td>
+<td>. .</td>
+<td>4</td>
+<td>PB5</td>
+</tr>
+<tr>
+<td style="text-align: right;">PA1</td>
+<td style="text-align: right;">5</td>
+<td>. .</td>
+<td>6</td>
+<td>PB6/CB1</td>
+</tr>
+<tr>
+<td style="text-align: right;">PA2</td>
+<td style="text-align: right;">7</td>
+<td>. .</td>
+<td>8</td>
+<td>PB7/CB2</td>
+</tr>
+<tr>
+<td style="text-align: right;">PA3</td>
+<td style="text-align: right;">9</td>
+<td>. .</td>
+<td>10</td>
+<td>GND</td>
+</tr>
+<tr>
+<td style="text-align: right;">PA4</td>
+<td style="text-align: right;">11</td>
+<td>. .</td>
+<td>12</td>
+<td>GND</td>
+</tr>
+<tr>
+<td style="text-align: right;">PA5</td>
+<td style="text-align: right;">13</td>
+<td>. .</td>
+<td>14</td>
+<td>GND</td>
+</tr>
+<tr>
+<td style="text-align: right;">PA6</td>
+<td style="text-align: right;">15</td>
+<td>. .</td>
+<td>16</td>
+<td>GND</td>
+</tr>
+<tr>
+<td style="text-align: right;">PA7</td>
+<td style="text-align: right;">17</td>
+<td>. .</td>
+<td>18</td>
+<td>GND</td>
+</tr>
+<tr>
+<td style="text-align: right;">CA1</td>
+<td style="text-align: right;">19</td>
+<td>. .</td>
+<td>20</td>
+<td>GND</td>
+</tr>
+<tr>
+<td style="text-align: right;">PB1</td>
+<td style="text-align: right;">21</td>
+<td>. .</td>
+<td>22</td>
+<td>GND</td>
+</tr>
+<tr>
+<td style="text-align: right;">PB2</td>
+<td style="text-align: right;">23</td>
+<td>. .</td>
+<td>24</td>
+<td>GND</td>
+</tr>
+<tr>
+<td style="text-align: right;">PB3/CA2</td>
+<td style="text-align: right;">25</td>
+<td>. .</td>
+<td>16</td>
+<td>VCC</td>
+</tr>
+</tbody>
+</table>
+<p>User port is connected to VIA 2 at address $9F10-$9F1F. This can be used for serial or parallel port I/O. Commander X16 does not have support for a serial port device in the KERNAL.</p>
+<h2 id="vera-video-header">VERA Video Header</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Desc</th>
+<th style="text-align: right;">Pin</th>
+<th></th>
+<th>Pin</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">VCC</td>
+<td style="text-align: right;">1</td>
+<td>. .</td>
+<td>2</td>
+<td>GND</td>
+</tr>
+<tr>
+<td style="text-align: right;">D7</td>
+<td style="text-align: right;">3</td>
+<td>. .</td>
+<td>4</td>
+<td>D6</td>
+</tr>
+<tr>
+<td style="text-align: right;">D5</td>
+<td style="text-align: right;">5</td>
+<td>. .</td>
+<td>6</td>
+<td>D4</td>
+</tr>
+<tr>
+<td style="text-align: right;">D3</td>
+<td style="text-align: right;">7</td>
+<td>. .</td>
+<td>8</td>
+<td>D2</td>
+</tr>
+<tr>
+<td style="text-align: right;">D1</td>
+<td style="text-align: right;">9</td>
+<td>. .</td>
+<td>10</td>
+<td>D0</td>
+</tr>
+<tr>
+<td style="text-align: right;">/IO1</td>
+<td style="text-align: right;">11</td>
+<td>. .</td>
+<td>12</td>
+<td>RESB</td>
+</tr>
+<tr>
+<td style="text-align: right;">/MEMWE</td>
+<td style="text-align: right;">13</td>
+<td>. .</td>
+<td>14</td>
+<td>IRQB</td>
+</tr>
+<tr>
+<td style="text-align: right;">A4</td>
+<td style="text-align: right;">15</td>
+<td>. .</td>
+<td>16</td>
+<td>/MEMOE</td>
+</tr>
+<tr>
+<td style="text-align: right;">A2</td>
+<td style="text-align: right;">17</td>
+<td>. .</td>
+<td>18</td>
+<td>A3</td>
+</tr>
+<tr>
+<td style="text-align: right;">A0</td>
+<td style="text-align: right;">19</td>
+<td>. .</td>
+<td>20</td>
+<td>A1</td>
+</tr>
+<tr>
+<td style="text-align: right;">GND</td>
+<td style="text-align: right;">21</td>
+<td>. .</td>
+<td>22</td>
+<td>GND</td>
+</tr>
+<tr>
+<td style="text-align: right;">VERA_L</td>
+<td style="text-align: right;">23</td>
+<td>. .</td>
+<td>24</td>
+<td>VERA_R</td>
+</tr>
+</tbody>
+</table>
+<p>VERA is connected to I/O ports at $9F20-$9F3F. See <a href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/#chapter-9-vera-programmers-reference">Chapter 9: VERA Programmer's Reference</a>
+for details.</p>
+<h3 id="vga-connector">VGA Connector</h3>
+<p><img alt="VGA Connector" src="../images/VGA_Port.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>RED</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GREEN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>BLUE</td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>6</td>
+<td>RED_RTN</td>
+</tr>
+<tr>
+<td>7</td>
+<td>GREEN_RTN</td>
+</tr>
+<tr>
+<td>8</td>
+<td>BLUE_RTN</td>
+</tr>
+<tr>
+<td>9</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>11</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>HSync</td>
+</tr>
+<tr>
+<td>14</td>
+<td>VSync</td>
+</tr>
+<tr>
+<td>15</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The VGA connector is a female <a href="https://en.wikipedia.org/wiki/D-subminiature#Description,_nomenclature,_and_variants">DE-15</a> jack.</p>
+<p>The video resolution is 640x480 59.5FPS progressive scan, RGB color, and separated H/V sync.</p>
+<p>In interlace mode, both horizontal and vertical sync pulses will appear on the HSync pin. (TODO: Test with OSSC).</p>
+<p>VERA does not use the ID/DDC lines.</p>
+<h3 id="composite-connector">Composite Connector</h3>
+<p>The Composite video is a standard RCA connector. Center pin carries signal. Shield is signal ground.</p>
+<p>The signal is NTSC Composite baseband video.</p>
+<p>The video is 480 lines 59.97Hz interlaced. Composite is not available when VGA is running at 59.5Hz progressive scan.</p>
+<h3 id="s-video-connector">S-Video Connector</h3>
+<p><img alt="S-Video Connector" src="../images/s_video.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Desc</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>GND (Y)</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>GND (C)</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Y</td>
+<td>Intensity (Luminance)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>C</td>
+<td>Color (Chrominance)</td>
+</tr>
+</tbody>
+</table>
+<p>The connector is a 4-pin Mini-DIN connector. While the same size as a PS/2 connector, the PS/2 connector has a plastic key at the bottom. Do not attempt to plug a keyboard or mouse into the S-Video port, or bent pins will occur.</p>
+<p>The signal is NTSC baseband Y/C separated video. S-Video provides better resolution than composite, since the color and intensity are provided on separate pins. you can use a splitter cable to separate the Y and C signals to drive a Commodore 1702 or compatible monitor.</p>
+<p>The video is 480 lines 59.97Hz interlaced. Composite is not available when VGA is running at 59.5Hz progressive scan.</p>
+<h3 id="j2-vera-programming-interface">J2 VERA Programming Interface</h3>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>+5V</td>
+</tr>
+<tr>
+<td>2</td>
+<td>FPGA_CDONE</td>
+</tr>
+<tr>
+<td>3</td>
+<td>FPGA_CRESET_B</td>
+</tr>
+<tr>
+<td>4</td>
+<td>SPI_MISO</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SPI_MOSI</td>
+</tr>
+<tr>
+<td>6</td>
+<td>SPI_SCK</td>
+</tr>
+<tr>
+<td>7</td>
+<td>SPI_SSEL_N</td>
+</tr>
+<tr>
+<td>8</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vera-j7-remote-sd-card-option">VERA J7 Remote SD Card Option</h3>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>CS</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SCK</td>
+</tr>
+<tr>
+<td>3</td>
+<td>MOSI</td>
+</tr>
+<tr>
+<td>4</td>
+<td>MISO</td>
+</tr>
+<tr>
+<td>5</td>
+<td>+5V</td>
+</tr>
+<tr>
+<td>6</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table>
+<p>This requires an EEPROM programmer and an interface board to program. See <a href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/#chapter-15-upgrade-guide">Chapter 15</a> for the programming adapter and instructions.</p>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 13: Working With CMDR-DOS">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                13: Working With CMDR-DOS
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/" class="md-footer__link md-footer__link--next" aria-label="Next: 15: Upgrade Guide">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                15: Upgrade Guide
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.prune", "navigation.tracking", "toc.follow", "search.suggest", "search.share", "header.autohide"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+      
+    
+  </body>
+</html>

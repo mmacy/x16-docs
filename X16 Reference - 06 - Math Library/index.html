@@ -1,0 +1,1400 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Adventures in turn-based text">
+      
+      
+        <meta name="author" content="Marsh Macy">
+      
+      
+        <link rel="canonical" href="https://mmacy.github.io/x16-docs/X16%20Reference%20-%2006%20-%20Math%20Library/">
+      
+      
+        <link rel="prev" href="../X16%20Reference%20-%2005%20-%20KERNAL/">
+      
+      
+        <link rel="next" href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.24">
+    
+    
+      
+        <title>6: Math Library - Commander X16 Documentation (UNOFFICIAL)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor:300,300i,400,400i,700,700i%7CChivo+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Actor";--md-code-font:"Chivo Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-math-library" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Commander X16 Documentation (UNOFFICIAL)" class="md-header__button md-logo" aria-label="Commander X16 Documentation (UNOFFICIAL)" data-md-component="logo">
+      
+  <img src="../images/logo_text.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Commander X16 Documentation (UNOFFICIAL)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6: Math Library
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mmacy/x16-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    x16-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Commander X16 Documentation (UNOFFICIAL)" class="md-nav__button md-logo" aria-label="Commander X16 Documentation (UNOFFICIAL)" data-md-component="logo">
+      
+  <img src="../images/logo_text.png" alt="logo">
+
+    </a>
+    Commander X16 Documentation (UNOFFICIAL)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mmacy/x16-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    x16-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2001%20-%20Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1: Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2002%20-%20Getting%20Started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2: Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2003%20-%20Editor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3: Editor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2004%20-%20BASIC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4: BASIC Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2005%20-%20KERNAL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5: KERNAL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    6: Math Library
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    6: Math Library
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#format-conversions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Format Conversions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#movement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Movement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#math-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-the-routines" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to use the routines
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7: Machine Language Monitor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2008%20-%20Memory%20Map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8: Memory Map
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9: VERA Programmer's Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10: VERA FX Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11: Sound Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2012%20-%20IO%20Programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12: I/O Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13: Working With CMDR-DOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2014%20-%20Hardware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14: Hardware Pinouts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15: Upgrade Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix A: Sound
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix B: VERA Firmware Recovery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix C: The 65C02 Processor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix D: Official Expansion Cards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix E: Diagnostic Bank
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix F: The 65C816 Processor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#format-conversions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Format Conversions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#movement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Movement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#math-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-the-routines" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to use the routines
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="6-math-library">6: Math Library</h1>
+<p>The Commander X16 contains a floating point Math library with a precision of 40 bits, which corresponds to 9 decimal digits. It is a stand-alone derivative of the library contained in Microsoft BASIC. Except for the different base address, it is compatible with the C128 and C65 libraries.</p>
+<p>The full documentation of these functions can be found in the book <a href="http://www.zimmers.net/anonftp/pub/cbm/schematics/computers/c128/servicemanuals/C128_Developers_Package_for_Commodore_6502_Development_(1987_Oct).pdf">C128 Developers Package for Commodore 6502 Development</a>. The Math Library documentation starts in Chapter 13. (PDF page 257)</p>
+<p>The following functions are available from machine language code after setting the ROM bank to 4, which is the default.</p>
+<h2 id="format-conversions">Format Conversions</h2>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$FE00</td>
+<td><code>AYINT</code></td>
+<td>convert floating point to integer (signed word)</td>
+</tr>
+<tr>
+<td>$FE03</td>
+<td><code>GIVAYF</code></td>
+<td>convert integer (signed word) to floating point</td>
+</tr>
+<tr>
+<td>$FE06</td>
+<td><code>FOUT</code></td>
+<td>convert floating point to ASCII string</td>
+</tr>
+<tr>
+<td>$FE09</td>
+<td><code>VAL_1</code></td>
+<td>convert ASCII string in .X:.Y length in .A, to floating point in FACC. <em>Caveat! Read below!</em></td>
+</tr>
+<tr>
+<td>$FE0C</td>
+<td><code>GETADR</code></td>
+<td>convert floating point to an address (unsigned word)</td>
+</tr>
+<tr>
+<td>$FE0F</td>
+<td><code>FLOATC</code></td>
+<td>convert address (unsigned word) to floating point</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Important caveat ragarding the <code>VAL_1</code> routine in its current implementation:</strong></p>
+<p>Unlike the other routines in the math library, this routine calls into the VAL implementation
+that is inside BASIC, and so it requires much of the BASIC zeropage to be intact to function correctly.
+The reason is that that routine ultimately relies on some internal BASIC routines that use a lot of BASIC zero page space.
+Ideally in the future, the <code>VAL_1</code> routine gets a new implementation that doesn't rely on the code in BASIC, thereby removing this restriction.</p>
+<p><strong>X16 Additions</strong></p>
+<p>The following calls are new to the X16 and were not part of the C128 math library API:</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$FE87</td>
+<td><code>FLOAT</code></td>
+<td>FACC = (s8).A   convert signed byte to float</td>
+</tr>
+<tr>
+<td>$FE8A</td>
+<td><code>FLOATS</code></td>
+<td>FACC = (s16)facho+1:facho</td>
+</tr>
+<tr>
+<td>$FE8D</td>
+<td><code>QINT</code></td>
+<td>facho:facho+1:facho+2:facho+3 = u32(FACC)</td>
+</tr>
+<tr>
+<td>$FE93</td>
+<td><code>FOUTC</code></td>
+<td>Convert FACC to ASCIIZ string at fbuffr - 1 + .Y</td>
+</tr>
+</tbody>
+</table>
+<h2 id="movement">Movement</h2>
+<p><code>PACK</code> indicates a conversion from a normalized floating-point number in FACC to its packed format in memory; <code>UNPACK</code> indicates a conversion from the packed format in memory to the normalized format in the destination.</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$FE5A</td>
+<td><code>CONUPK</code></td>
+<td>ARG = UNPACK(RAM MEM)</td>
+</tr>
+<tr>
+<td>$FE5D</td>
+<td><code>ROMUPK</code></td>
+<td>ARG = UNPACK(ROM MEM) (use <code>CONUPK</code>)</td>
+</tr>
+<tr>
+<td>$FE60</td>
+<td><code>MOVFRM</code></td>
+<td>FACC = UNPACK(RAM MEM) (use <code>MOVFM</code>)</td>
+</tr>
+<tr>
+<td>$FE63</td>
+<td><code>MOVFM</code></td>
+<td>FACC = UNPACK(ROM MEM)</td>
+</tr>
+<tr>
+<td>$FE66</td>
+<td><code>MOVMF</code></td>
+<td>MEM = PACK(ROUND(FACC))</td>
+</tr>
+<tr>
+<td>$FE69</td>
+<td><code>MOVFA</code></td>
+<td>FACC = ARG</td>
+</tr>
+<tr>
+<td>$FE6C</td>
+<td><code>MOVAF</code></td>
+<td>FACC = ROUND(FACC); ARG = FACC</td>
+</tr>
+</tbody>
+</table>
+<p><strong>X16 Additions</strong></p>
+<p>The following calls are new to the X16 and were not part of the C128 math library API:</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$FE81</td>
+<td><code>MOVEF</code></td>
+<td>ARG = FACC</td>
+</tr>
+</tbody>
+</table>
+<h2 id="math-functions">Math Functions</h2>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$FE12</td>
+<td><code>FSUB</code></td>
+<td>FACC = MEM - FACC</td>
+</tr>
+<tr>
+<td>$FE15</td>
+<td><code>FSUBT</code></td>
+<td>FACC = ARG - FACC</td>
+</tr>
+<tr>
+<td>$FE18</td>
+<td><code>FADD</code></td>
+<td>FACC = MEM + FACC</td>
+</tr>
+<tr>
+<td>$FE1B</td>
+<td><code>FADDT</code></td>
+<td>FACC = ARG + FACC</td>
+</tr>
+<tr>
+<td>$FE1E</td>
+<td><code>FMULT</code></td>
+<td>FACC = MEM * FACC</td>
+</tr>
+<tr>
+<td>$FE21</td>
+<td><code>FMULTT</code></td>
+<td>FACC = ARG * FACC</td>
+</tr>
+<tr>
+<td>$FE24</td>
+<td><code>FDIV</code></td>
+<td>FACC = MEM / FACC</td>
+</tr>
+<tr>
+<td>$FE27</td>
+<td><code>FDIVT</code></td>
+<td>FACC = ARG / FACC</td>
+</tr>
+<tr>
+<td>$FE2A</td>
+<td><code>LOG</code></td>
+<td>FACC = natural log of FACC</td>
+</tr>
+<tr>
+<td>$FE2D</td>
+<td><code>INT</code></td>
+<td>FACC = INT() truncate of FACC</td>
+</tr>
+<tr>
+<td>$FE30</td>
+<td><code>SQR</code></td>
+<td>FACC = square root of FACC</td>
+</tr>
+<tr>
+<td>$FE33</td>
+<td><code>NEGOP</code></td>
+<td>negate FACC (switch sign)</td>
+</tr>
+<tr>
+<td>$FE36</td>
+<td><code>FPWR</code></td>
+<td>FACC = raise ARG to the MEM power</td>
+</tr>
+<tr>
+<td>$FE39</td>
+<td><code>FPWRT</code></td>
+<td>FACC = raise ARG to the FACC power</td>
+</tr>
+<tr>
+<td>$FE3C</td>
+<td><code>EXP</code></td>
+<td>FACC = EXP of FACC</td>
+</tr>
+<tr>
+<td>$FE3F</td>
+<td><code>COS</code></td>
+<td>FACC = COS of FACC</td>
+</tr>
+<tr>
+<td>$FE42</td>
+<td><code>SIN</code></td>
+<td>FACC = SIN of FACC</td>
+</tr>
+<tr>
+<td>$FE45</td>
+<td><code>TAN</code></td>
+<td>FACC = TAN of FACC</td>
+</tr>
+<tr>
+<td>$FE48</td>
+<td><code>ATN</code></td>
+<td>FACC = ATN of FACC</td>
+</tr>
+<tr>
+<td>$FE4B</td>
+<td><code>ROUND</code></td>
+<td>FACC = round FACC</td>
+</tr>
+<tr>
+<td>$FE4E</td>
+<td><code>ABS</code></td>
+<td>FACC = absolute value of FACC</td>
+</tr>
+<tr>
+<td>$FE51</td>
+<td><code>SIGN</code></td>
+<td>.A = test sign of FACC</td>
+</tr>
+<tr>
+<td>$FE54</td>
+<td><code>FCOMP</code></td>
+<td>.A = compare FACC with MEM</td>
+</tr>
+<tr>
+<td>$FE57</td>
+<td><code>RND_0</code></td>
+<td>FACC = random floating point number</td>
+</tr>
+</tbody>
+</table>
+<p><strong>X16 Additions to math functions</strong></p>
+<p>The following calls are new to the X16 and were not part of the C128 math library API:</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$FE6F</td>
+<td><code>FADDH</code></td>
+<td>FACC += .5</td>
+</tr>
+<tr>
+<td>$FE72</td>
+<td><code>ZEROFC</code></td>
+<td>FACC = 0</td>
+</tr>
+<tr>
+<td>$FE75</td>
+<td><code>NORMAL</code></td>
+<td>Normalize FACC</td>
+</tr>
+<tr>
+<td>$FE78</td>
+<td><code>NEGFAC</code></td>
+<td>FACC = -FACC   (just use NEGOP)</td>
+</tr>
+<tr>
+<td>$FE7B</td>
+<td><code>MUL10</code></td>
+<td>FACC *= 10</td>
+</tr>
+<tr>
+<td>$FE7E</td>
+<td><code>DIV10</code></td>
+<td>FACC /= 10</td>
+</tr>
+<tr>
+<td>$FE84</td>
+<td><code>SGN</code></td>
+<td>FACC = sgn(FACC)</td>
+</tr>
+<tr>
+<td>$FE90</td>
+<td><code>FINLOG</code></td>
+<td>FACC += (s8).A   add signed byte to float</td>
+</tr>
+<tr>
+<td>$FE96</td>
+<td><code>POLYX</code></td>
+<td>Polynomial Evaluation 1 (SIN/COS/ATN/LOG)</td>
+</tr>
+<tr>
+<td>$FE99</td>
+<td><code>POLY</code></td>
+<td>Polynomial Evaluation 2 (EXP)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-to-use-the-routines">How to use the routines</h2>
+<p><strong>Concepts:</strong></p>
+<ul>
+<li><strong>FACC</strong> (sometimes abbreviated to FAC): the floating point accumulator. You can compare this to the 6502 CPU's .A register,
+  which is the accumulator for most integer operations performed by the CPU.
+  FACC is the primary floating point register. Calculations are done on the value in this register,
+  usually combined with ARG. After the operation, usually the original value in FACC has been replaced by the result of the calculation.</li>
+<li><strong>ARG</strong>: the second floating point register, used in most calculation functions. Often the value in this register will be lost after a calculation.</li>
+<li><strong>MEM</strong>: means a floating point value stored in system memory somewhere.  The format is <a href="https://en.wikipedia.org/wiki/Microsoft_Binary_Format">40 bits (5 bytes) Microsoft binary format</a>.
+  To be able to work with given values in calculations, they need to be stored in memory somewhere in this format.
+  To do this you'll likely need to use a separate program to pre-convert floating point numbers to this format, unless you are using a compiler that
+  directly supports it.</li>
+</ul>
+<p><em>Note that FACC and ARG are just a bunch of zero page locations. This means you can poke around in them.
+But that's not good practice because their locations aren't guaranteed/public, and the format is slightly different
+than how the 5-byte floats are normally stored into memory. Just use one of the Movement routines to
+copy values into or out of FACC and ARG.</em></p>
+<p>To perform a floating point calculation, follow the following pattern:</p>
+<ol>
+<li>load a value into FACC. You can convert an integer, or move a MEM float number into FACC.</li>
+<li>do the same but for ARG, the second floating point register.</li>
+<li>call the required floating point calculation routine that will perform a calculation on FACC with ARG.</li>
+<li>repeat the previous 2 steps if required.</li>
+<li>the result is in FACC, move it into MEM somewhere or convert it to another type or string.</li>
+</ol>
+<p>An example program that calculates and prints the distance an object has fallen over a certain period
+using the formula  $d = \dfrac{1}{2} g {t}^{2}$</p>
+<div class="language-ASM highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">; calculate how far an object has fallen:  d = 1/2 * g * t^2.</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">; we set g = 9.81 m/sec^2, time = 5 sec -&gt; d = 122.625 m.</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nf">CHROUT</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="no">$ffd2</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nf">FOUT</span><span class="w">   </span><span class="err">=</span><span class="w"> </span><span class="no">$fe06</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nf">FMULTT</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="no">$fe21</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nf">FDIV</span><span class="w">   </span><span class="err">=</span><span class="w"> </span><span class="no">$fe24</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nf">CONUPK</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="no">$fe5a</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nf">MOVFM</span><span class="w">  </span><span class="err">=</span><span class="w"> </span><span class="no">$fe63</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nf">lda</span><span class="w">  </span><span class="mi">#4</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="nf">sta</span><span class="w">  </span><span class="no">$01</span><span class="w">         </span><span class="c1">; rom bank 4 (BASIC) contains the fp routines.</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nf">lda</span><span class="w">  </span><span class="c1">#&lt;flt_two</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="nf">ldy</span><span class="w">  </span><span class="c1">#&gt;flt_two</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="nf">jsr</span><span class="w">  </span><span class="no">MOVFM</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="nf">lda</span><span class="w">  </span><span class="c1">#&lt;flt_g</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="nf">ldy</span><span class="w">  </span><span class="c1">#&gt;flt_g</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="nf">jsr</span><span class="w">  </span><span class="no">FDIV</span><span class="w">        </span><span class="c1">; FACC= g/2</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="nf">lda</span><span class="w">  </span><span class="c1">#&lt;flt_time</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="nf">ldy</span><span class="w">  </span><span class="c1">#&gt;flt_time</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="nf">jsr</span><span class="w">  </span><span class="no">CONUPK</span><span class="w">      </span><span class="c1">; ARG = time</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="nf">jsr</span><span class="w">  </span><span class="no">FMULTT</span><span class="w">      </span><span class="c1">; FACC = g/2 * time</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="nf">lda</span><span class="w">  </span><span class="c1">#&lt;flt_time</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="nf">ldy</span><span class="w">  </span><span class="c1">#&gt;flt_time</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="nf">jsr</span><span class="w">  </span><span class="no">CONUPK</span><span class="w">      </span><span class="c1">; again ARG = time</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="nf">jsr</span><span class="w">  </span><span class="no">FMULTT</span><span class="w">      </span><span class="c1">; FACC = g/2 * time * time</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="nf">jsr</span><span class="w">  </span><span class="no">FOUT</span><span class="w">        </span><span class="c1">; to string</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="c1">; print string in AY</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">    </span><span class="nf">sta</span><span class="w">  </span><span class="no">$02</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="nf">sty</span><span class="w">  </span><span class="no">$03</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="nf">ldy</span><span class="w">  </span><span class="mi">#0</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="nl">loop:</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="nf">lda</span><span class="w">  </span><span class="p">(</span><span class="no">$02</span><span class="p">),</span><span class="no">y</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">    </span><span class="nf">beq</span><span class="w">  </span><span class="no">done</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">    </span><span class="nf">jsr</span><span class="w">  </span><span class="no">CHROUT</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="nf">iny</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">    </span><span class="nf">bne</span><span class="w">  </span><span class="no">loop</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="nl">done:</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="nf">rts</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="nl">flt_g:</span><span class="w">      </span><span class="na">.byte</span><span class="w">  </span><span class="no">$84</span><span class="p">,</span><span class="w"> </span><span class="no">$1c</span><span class="p">,</span><span class="w"> </span><span class="no">$f5</span><span class="p">,</span><span class="w"> </span><span class="no">$c2</span><span class="p">,</span><span class="w"> </span><span class="no">$8f</span><span class="w">  </span><span class="c1">; float 9.81</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="nl">flt_time:</span><span class="w">   </span><span class="na">.byte</span><span class="w">  </span><span class="no">$83</span><span class="p">,</span><span class="w"> </span><span class="no">$20</span><span class="p">,</span><span class="w"> </span><span class="no">$00</span><span class="p">,</span><span class="w"> </span><span class="no">$00</span><span class="p">,</span><span class="w"> </span><span class="no">$00</span><span class="w">  </span><span class="c1">; float 5.0</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="nl">flt_two:</span><span class="w">    </span><span class="na">.byte</span><span class="w">  </span><span class="no">$82</span><span class="p">,</span><span class="w"> </span><span class="no">$00</span><span class="p">,</span><span class="w"> </span><span class="no">$00</span><span class="p">,</span><span class="w"> </span><span class="no">$00</span><span class="p">,</span><span class="w"> </span><span class="no">$00</span><span class="w">  </span><span class="c1">; float 2.0</span>
+</span></code></pre></div>
+<h2 id="notes">Notes</h2>
+<ul>
+<li><code>RND_0</code>: For .Z=1, the X16 behaves differently than the C128 and C65 versions. The X16 version takes entropy from .A/.X/.Y instead of from a CIA timer. So in order to get a "real" random number, you would use code like this:</li>
+</ul>
+<div class="language-ASM highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">LDA</span><span class="w"> </span><span class="c1">#$00</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nf">PHP</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nf">JSR</span><span class="w"> </span><span class="no">entropy_get</span><span class="w"> </span><span class="c1">; KERNAL call to get entropy into .A/.X/.Y</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nf">PLP</span><span class="w">             </span><span class="c1">; restore .Z=1</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nf">JSR</span><span class="w"> </span><span class="no">RND_0</span>
+</span></code></pre></div>
+<ul>
+<li>The calls <code>FADDT</code>, <code>FMULTT</code>, <code>FDIVT</code> and <code>FPWRT</code> were broken on the C128/C65. They are fixed on the X16.</li>
+<li>For more information on the additional calls, refer to <a href="http://unusedino.de/ec64/technical/project64/mapping_c64.html">Mapping the Commodore 64</a> by Sheldon Leemon, ISBN 0-942386-23-X, but note these errata:</li>
+<li><code>FMULT</code> adds mem to FACC, not ARG to FACC</li>
+</ul>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../X16%20Reference%20-%2005%20-%20KERNAL/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 5: KERNAL">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                5: KERNAL
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/" class="md-footer__link md-footer__link--next" aria-label="Next: 7: Machine Language Monitor">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                7: Machine Language Monitor
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.prune", "navigation.tracking", "toc.follow", "search.suggest", "search.share", "header.autohide"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+      
+    
+  </body>
+</html>
